@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="project3">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body ng-controller="ctrl">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">IMDB DB</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Search</a></li>
+                <li><a href="about_us_page/index.html">About Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1 class="page-header" style="text-align: center">Search Page</h1>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <input id="searchbox" type="text" ng-model="searchBox">
+                <select ng-model="select" value="People">
+                    <option value="People">People</option>
+                    <option value="Titles">Titles</option>
+                </select>
+                <button type="button" class="btn btn-secondary" ng-click="submit(searchBox,select)">Submit</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <h1 class="page-header" style="text-align: center">Results</h1>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <table>
+                    <!--TODO: NG-Repeat for how many rows we have in the array that will hold the movie titles/people...
+                        TODO: Each element in the array should have 2 things: 1)primary_name 2)href should point to new page, which we will pass x.name(or the movie id)-->
+                    <tr ng-repeat="row in rows">
+                        <td><a ng-href="/{{row.pg}}?const={{row.const}}">{{row.field0}}, {{row.field1}}, {{row.field2}}, {{row.field3}}</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script
+            src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>
